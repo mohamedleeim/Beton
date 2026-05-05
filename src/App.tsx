@@ -2096,23 +2096,35 @@ export default function App() {
                       <div className="space-y-1.5 col-span-1 sm:col-span-2">
                         <label className="text-sm font-semibold text-slate-600">الموقع الجغرافي (GPS)</label>
                         <div className="flex gap-2">
-                          <input 
-                            type="text"
-                            value={formData["GPS"] || ''}
-                            readOnly
-                            onClick={() => {
-                              if (formData["GPS"]) {
-                                window.open(`https://www.google.com/maps/search/?api=1&query=${formData["GPS"]}`, '_blank');
-                              }
-                            }}
-                            className={`flex-1 bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 text-slate-500 italic ${formData["GPS"] ? 'cursor-pointer hover:text-blue-600 hover:border-blue-300' : ''}`}
-                            placeholder="اضغط للالتقاط..."
-                          />
+                          <div className="relative flex-1">
+                            <input 
+                              type="text"
+                              value={formData["GPS"] || ''}
+                              onChange={(e) => setFormData(prev => ({ ...prev, ["GPS"]: e.target.value }))}
+                              className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl py-2.5 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-700 dark:text-slate-200"
+                              placeholder="أدخل الإحداثيات أو اضغط للالتقاط..."
+                            />
+                            {formData["GPS"] && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const coords = formData["GPS"].trim();
+                                  if (coords) {
+                                    window.open(`https://www.google.com/maps/search/?api=1&query=${coords}`, '_blank');
+                                  }
+                                }}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 hover:text-blue-600 transition-colors"
+                                title="عرض على الخريطة"
+                              >
+                                <Globe size={18} />
+                              </button>
+                            )}
+                          </div>
                           <button
                             type="button"
                             onClick={captureGPS}
                             disabled={gpsLoading}
-                            className="bg-blue-600 text-white p-3 rounded-xl shadow-lg shadow-blue-200 hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
+                            className="bg-blue-600 text-white p-3 rounded-xl shadow-lg shadow-blue-200 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 shrink-0"
                           >
                             {gpsLoading ? <Loader2 size={20} className="animate-spin" /> : <MapPinIcon size={20} />}
                           </button>
