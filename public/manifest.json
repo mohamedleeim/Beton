@@ -1,0 +1,21 @@
+{
+  "name": "نظام إدارة بيانات الخرسانة",
+  "short_name": "نظام الخرسانة",
+  "description": "نظام متكامل لإدارة بيانات الخرسانة والمشاريع",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "https://ais-dev-tagubkgkon5f2igisyfmvx-280051250933.europe-west1.run.app/attachments/78086071-7058-479e-a89a-00448003668f",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://ais-dev-tagubkgkon5f2igisyfmvx-280051250933.europe-west1.run.app/attachments/78086071-7058-479e-a89a-00448003668f",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

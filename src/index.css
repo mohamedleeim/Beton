@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --variant-dark: .dark &;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
